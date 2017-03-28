@@ -3,15 +3,18 @@ package com.bridgelabz.spring8.model;
 
 	import java.util.Iterator;
 	import java.util.List;
+import java.util.Set;
 
 	public class Question
 	{
 
 		private int id;
 		private String name;
-		private List<String> answers;
+		//if we use the set we can't add duplicates
+		//if we use the list then we can add the duplicates
+		private Set<String> answers;
 		
-		public Question(int id,String name,List<String> answers)
+		public Question(int id,String name,Set<String> answers)
 		{
 			this.id=id;
 			this.name=name;
