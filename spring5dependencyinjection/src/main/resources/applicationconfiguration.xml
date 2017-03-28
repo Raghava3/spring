@@ -7,6 +7,10 @@
                 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
   
 <bean id="a" class="com.bridgelabz.spring5dependencyinjection.model.Employee">
+ <!-- if u r passing only integer value then integer constructor is executed
+ if u r passing only string  value then string  constructor is executed
+ if u r passing both the value  then combination constructor is executed
+ in this program we are passing the both the vlaue so combination constructor is excecuted -->
  <constructor-arg value="10" type="int"></constructor-arg> 
 <constructor-arg value="raghav" type="String"></constructor-arg>  
 </bean>
