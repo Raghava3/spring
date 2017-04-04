@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+/home/bridgelabz3/Desktop/Raghavworkbench/studentcompleteregistration/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2624634344.index
+3159732137.index
+112343273.index
+1219441111.index
+329183366.index
+1009703835.index
+1481337490.index

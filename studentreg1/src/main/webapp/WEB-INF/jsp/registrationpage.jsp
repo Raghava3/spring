@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<pre>
+<center>
+<form action="loginpage" method="post">
+name:    <input type="text" name="name" value="enter the name">
+email:   <input type="text" name="email" value="enter the email">
+password:<input type="pass" name="password" value="enter the password">
+         <input type="submit" value="click to reg">
+</form>
+</center>
+</pre>
+</body>
+</html>
