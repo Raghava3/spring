@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+  
+	<context:component-scan base-package="com.bridgelabz.studentregistration.controller" />
+	<mvc:annotation-driven />
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<!-- id will be interface reference name  and it should be same as the reference variable in
+	 @autowired where u r using and class will be  implementationclass name.
+	  example  below 
+	  id="studentDaoInterface" is the interface reference variable and class is fully qualified name of the 
+	  implemented class -->
+	
+	<!-- this is to create the object of the studentDaoImplementation -->
+	    <bean id="studentDaoInterface" class="com.bridgelabz.studentregistration.dao.StudentDaoImplementation"></bean>
+   
+    <!-- this is to create the object of the studentServiceImplementation-->
+ 	    <bean id="studentServiceInterface" class="com.bridgelabz.studentregistration.service.StudentServiceImplementation"></bean>
+ 	
+ 	<!-- this is to create the object of the mysql -->
+ 	    <bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/Raghava" />
+		<property name="user" value="root" />
+		<property name="password" value="root" />
+		</bean>
+		
+		
+		
+		<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="pooledDataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>
+					com.bridgelabz.studentregistration.model.Student
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect"> org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+	</bean>
+		
+ 	
+</beans>
