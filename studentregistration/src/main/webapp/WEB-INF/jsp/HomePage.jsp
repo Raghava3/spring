@@ -7,7 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 hello anntamma
 
+=======
+hello anntamma 
+>>>>>>> 9e1930400eecd909387259bb7e00b50a936c660f
 </body>
 </html>

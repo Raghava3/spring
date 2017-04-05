@@ -4,6 +4,10 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+<<<<<<< HEAD
+=======
+        <wb-resource deploy-path="/" source-path="/src/main/webapp/WEB-INF/jsp"/>
+>>>>>>> 9e1930400eecd909387259bb7e00b50a936c660f
         <property name="context-root" value="studentregistration"/>
         <property name="java-output-path" value="/studentregistration/target/classes"/>
     </wb-module>

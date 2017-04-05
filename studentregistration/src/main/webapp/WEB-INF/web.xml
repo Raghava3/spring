@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 <web-app xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+=======
+<web-app
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+>>>>>>> 9e1930400eecd909387259bb7e00b50a936c660f
 	id="WebApp_ID" version="2.5">
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -17,4 +22,8 @@
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 </web-app>
+=======
+</web-app>
+>>>>>>> 9e1930400eecd909387259bb7e00b50a936c660f

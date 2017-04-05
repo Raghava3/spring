@@ -4,14 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bridgelabz.studentregistration.Model.Student;
+=======
+import org.springframework.web.servlet.ModelAndView;
+
+import com.bridgelabz.studentregistration.model.Student;
+
+>>>>>>> 9e1930400eecd909387259bb7e00b50a936c660f
 import com.bridgelabz.studentregistration.service.StudentServiceInterface;
 
 @Controller
 @RequestMapping("/")
+<<<<<<< HEAD
 public class StudentController {
 
 	//this is correct program
@@ -65,3 +73,41 @@ public class StudentController {
 	
 	
 }
+=======
+public class StudentController 
+{
+
+	@Autowired
+    private	StudentServiceInterface studentServiceInterface;
+	
+@RequestMapping(value="/registration",method=RequestMethod.POST)	
+public ModelAndView registration()
+{
+	
+	return new ModelAndView("RegistrationPage");
+	
+}
+
+@RequestMapping(value="/login",method=RequestMethod.POST)	
+public ModelAndView login(Student student)
+{
+  int n= studentServiceInterface.register(student);
+	if(n==1)
+	{
+	return new ModelAndView("LoginPage");
+	}
+	else
+	{
+		return new ModelAndView("RegistrationPagePage");
+	}
+}
+
+@RequestMapping(value="/home")	
+public ModelAndView welcome()
+{
+	return new ModelAndView("HomePage");
+	
+}
+
+}
+>>>>>>> 9e1930400eecd909387259bb7e00b50a936c660f

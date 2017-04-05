@@ -9,15 +9,23 @@
 <body bg color="blue">
 <pre>
 <center>
+<<<<<<< HEAD
 
 
 <form action="registrationpage" method="post">
+=======
+<form action="registration" method="post">
+>>>>>>> 9e1930400eecd909387259bb7e00b50a936c660f
 <input type="submit" value="click here to registration" >
 </form>
 
 
+<<<<<<< HEAD
 
 <form action="loginpage" method="post">
+=======
+<form action="login" method="post">
+>>>>>>> 9e1930400eecd909387259bb7e00b50a936c660f
 <input type="submit" value="click here to login" >
 </form>
 
