@@ -1,0 +1,64 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.bridgelabz.countryprojectdb.model.User;
+
+@Repository
+public class UserDaoImpl implements UserDaoInterface 
+{
+ 
+	@Autowired
+	SessionFactory sessionFactory;
+	
+	public int register(User user)
+	{
+		Session session = sessionFactory.openSession();
+		Transaction tr = null;
+		try {
+			tr = session.beginTransaction();
+			session.saveOrUpdate(user);
+			tr.commit();
+
+			return 1;
+		} catch (Exception e) {
+			tr.rollback();
+			return 0;
+		} finally {
+			session.close();
+		}
+	
+		
+	}
+
+	public Object loginValidation(String email, String password)
+	{
+		
+		Session session = sessionFactory.openSession();
+		Transaction tr = null;
+		try {
+			tr = session.beginTransaction();
+			String hql = "select id from User  where email='"+email+"'and password='"+password+"'";
+			
+			System.out.println(hql);
+			org.hibernate.Query query = session.createQuery(hql);
+			
+			Integer s = (Integer) query.uniqueResult();
+			System.out.println(s);
+	
+			return s;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+			return 0;
+		} finally {
+			session.close();
+		}
+		
+		
+	}
+}

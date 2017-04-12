@@ -1,0 +1,15 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+import java.util.List;
+
+import com.bridgelabz.countryprojectdb.model.Country;
+
+public interface CountryDaoInterface 
+{
+
+	public int update(int id, String name, int area, long population ,String currency);
+	
+	public List<Country> list();
+	
+	public Country countryDetails(String name);
+}

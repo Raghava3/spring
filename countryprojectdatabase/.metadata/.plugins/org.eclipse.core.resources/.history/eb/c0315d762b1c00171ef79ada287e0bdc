@@ -1,0 +1,5 @@
+package com.bridgelabz.countryprojectdb.filter;
+
+public class AuthenticationFilter {
+
+}

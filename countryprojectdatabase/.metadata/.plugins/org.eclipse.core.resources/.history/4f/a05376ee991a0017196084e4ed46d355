@@ -1,0 +1,5 @@
+package com.bridgelabz.countryprojectdb.model;
+
+public class User {
+
+}

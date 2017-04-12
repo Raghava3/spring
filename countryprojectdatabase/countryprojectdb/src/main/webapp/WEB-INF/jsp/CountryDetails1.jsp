@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<table border="2">
+		<tr>
+			<th>id</th>
+			<td>${countrydetails.id}</td>
+		</tr>
+
+		<tr>
+			<th>COUNTRY NAME</th>
+			<td>${countrydetails.name}</td>
+		</tr>
+
+		<tr>
+			<th>AREA</th>
+			<td>${countrydetails.area}</td>
+		</tr>
+
+		<tr>
+			<th>POPULATION</th>
+			<td>${countrydetails.population}</td>
+		</tr>
+
+		<tr>
+			<th>CURRENCY</th>
+			<td>${countrydetails.currency}</td>
+		</tr>
+	</table>
+
+ 	<a href="index.jsp">click here to Home page</a>
+
+</body>
+</html>

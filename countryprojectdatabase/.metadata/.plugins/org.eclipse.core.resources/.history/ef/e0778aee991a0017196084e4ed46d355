@@ -1,0 +1,10 @@
+package com.bridgelabz.countryprojectdb.service;
+
+import com.bridgelabz.countryprojectdb.model.User;
+
+public interface UserServiceInterface 
+{
+	
+	public int register(User user);
+
+}
