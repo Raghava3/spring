@@ -32,6 +32,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public Employee login(String mail, String password) {
 		
 		try {
@@ -40,7 +41,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			
 			String hql = "from Employee where mail=:m and password=:p";
 			
-			Query query = session.createQuery(hql);
+			Query<Employee> query = session.createQuery(hql);
 			query.setParameter("m", mail);
 			query.setParameter("p", password);
 			Employee employee = (Employee) query.uniqueResult();
@@ -52,6 +53,19 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public int delete(int id) {
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		String hql = "delete from Employee where id=:id";
+		Query<Employee> query = session.createQuery(hql);
+		query.setParameter("id",id);
+	    int n= query.executeUpdate();
+		
+		return n;
+		
 	}
 
 }
