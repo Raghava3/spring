@@ -1,0 +1,13 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+public class CountryDaoImpl implements CountryDaoInterface
+{
+
+	@Override
+	public int update() 
+	{
+		
+	}
+	
+
+}

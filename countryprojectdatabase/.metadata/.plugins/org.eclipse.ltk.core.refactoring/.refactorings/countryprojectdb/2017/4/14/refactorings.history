@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;com.bridgelabz.countryprojectdb.model.Country.ctryid&apos; in &apos;com.bridgelabz.countryprojectdb.model.Country&apos;&#x0A;- Original project: &apos;countryprojectdb&apos;&#x0A;- Original element: &apos;com.bridgelabz.countryprojectdb.model.Country.ctryid&apos;&#x0A;- Getter method name: &apos;getCtryid&apos;&#x0A;- Setter method name: &apos;setCtryid&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;ctryid&apos;" flags="589830" getter="getCtryid" id="org.eclipse.jdt.ui.self.encapsulate" input="/src\/main\/java&lt;com.bridgelabz.countryprojectdb.model{Country.java[Country^ctryid" insertion="9" setter="setCtryid" stamp="1491480045197" version="1.0" visibility="1"/>
+</session>

@@ -1,0 +1,8 @@
+package com.bridgelabz.countryprojectdb.service;
+
+public interface CountryServiceInterface 
+{
+	public int update(int id,String name,int area,long population,String currency);
+	
+
+}

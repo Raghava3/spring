@@ -7,4 +7,6 @@ public interface UserServiceInter
 public boolean register(User user);
 
 public User login(String mail, String password);
+
+public User retrive();
 }

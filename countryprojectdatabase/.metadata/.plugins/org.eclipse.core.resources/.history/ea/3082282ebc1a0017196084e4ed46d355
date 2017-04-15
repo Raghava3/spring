@@ -1,0 +1,25 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+import com.bridgelabz.countryprojectdb.model.Country;
+
+public class CountryDaoImpl implements CountryDaoInterface
+{
+
+	@Override
+	public int update(int id,String name,int area,long population,String currency) 
+	{
+		
+		Country country=new Country();
+        country.setId(id);
+        country.setName(name);
+        country.setArea(area);
+        country.setPopulation(population);
+        country.setCurrency(currency);
+       
+        //Save the employee in database
+        session.save(country);
+		
+	}
+	
+
+}

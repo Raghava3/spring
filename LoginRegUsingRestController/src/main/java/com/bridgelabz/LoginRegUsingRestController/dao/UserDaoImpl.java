@@ -57,4 +57,12 @@ public class UserDaoImpl implements UserDaoInter {
 		}
 	}
 
+	@Override
+	public User retrive() 
+	{
+		Session session = sessionFactory.openSession();
+	    Transaction transaction = session.beginTransaction();
+		
+	}
+
 }

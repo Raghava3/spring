@@ -1,0 +1,27 @@
+package com.bridgelabz.countryprojectdb.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.bridgelabz.countryprojectdb.dao.UserDaoInterface;
+import com.bridgelabz.countryprojectdb.model.User;
+
+public class UserServiceImpl implements UserServiceInterface
+{
+	@Autowired
+	UserDaoInterface userDaoInterface;
+	
+	public int register(User user)
+	{
+	int n=userDaoInterface.register(user);
+	return n;
+	}
+
+	public Object loginValidation(String email, String password)
+	{
+		
+		Object n=userDaoInterface.loginValidation(email, password);
+		return n;
+		
+	}
+
+}

@@ -1,0 +1,83 @@
+package com.bridgelabz.countryprojectdb.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import com.bridgelabz.countryprojectdb.model.User;
+import com.bridgelabz.countryprojectdb.service.UserServiceInterface;
+
+@Controller
+@RequestMapping("/")
+public class UserControl {
+	@Autowired
+	UserServiceInterface userServiceInterface;
+
+	@RequestMapping(value = "registrationpage", method = RequestMethod.POST)
+	public ModelAndView registrationPage() {
+		return new ModelAndView("RegistrationPage");
+	}
+
+	@RequestMapping(value = "loginpage", method = RequestMethod.POST)
+	public ModelAndView loginPage() {
+		return new ModelAndView("LoginPage");
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ModelAndView register(User user) {
+		int n = userServiceInterface.register(user);
+
+		if (n == 1) {
+
+			return new ModelAndView("LoginPage");
+
+		} else {
+			String msg = "registration failed please update again";
+			return new ModelAndView("RegistrationPage", "msg", msg);
+
+		}
+
+	}
+
+	@RequestMapping(value = "/loginvalidation", method = RequestMethod.GET)
+	public ModelAndView loginValidation(@RequestParam("email") String email,
+			@RequestParam("password") String password) {
+
+		try {
+
+			Object l = userServiceInterface.loginValidation(email, password);
+
+			System.out.println(l);
+			
+			if (l != null) {
+				ModelAndView mo=new ModelAndView("HomePage");
+				mo.addObject("email", email);	
+                return mo;
+			}
+
+			else {
+				String msg = " The email and password is not matching. please enter  again";
+				return new ModelAndView("LoginPage", "msg", msg);
+
+			}
+
+		} catch (Exception e) {
+			String msg = "please signup ";
+			return new ModelAndView("LoginPage", "msg", msg);
+
+		}
+	}
+	
+	@RequestMapping(value="/profile", method = RequestMethod.POST)
+	public ModelAndView profile(@RequestParam("email") String email)
+	{
+		User l = userServiceInterface.profile(email);
+        return  new 	ModelAndView("ProfilePage","ProfileDetails",l);
+		
+	}
+
+}

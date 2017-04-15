@@ -1,0 +1,5 @@
+package com.bridgelabz.countryprojectdb.service;
+
+public interface CountryServiceInterface {
+
+}

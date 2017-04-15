@@ -1,0 +1,73 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.bridgelabz.countryprojectdb.model.Country;
+
+@Repository
+public class CountryDaoImpl implements CountryDaoInterface {
+
+	@Autowired
+	SessionFactory sessionFactory;
+
+	@Override
+	public int update(int id,String name,int area,long population,String currency) 
+	{
+		
+		Session session = sessionFactory.openSession();
+		Transaction tr = null;
+		
+		Country country=new Country();
+        country.setId(id);
+        country.setName(name);
+        country.setArea(area);
+        country.setPopulation(population);
+        country.setCurrency(currency);
+       
+        
+        try
+        {
+			tr = session.beginTransaction();
+             session.save(country);
+             tr.commit();
+             return 1;
+	    }
+        catch (Exception e)
+        {
+			 
+			return 0;
+		} 
+        finally 
+        {
+			session.close();
+		}
+
+     }
+
+	@Override
+	public List<Country> list() 
+	{
+		Session session = sessionFactory.openSession();
+		Transaction tr = null;
+		 List<Country> a=null;//this list is to add country object
+		  List country = session.createQuery("from Country").list();
+		  
+	         for (Iterator iterator = country.iterator(); iterator.hasNext();)
+	         {
+	        	
+	        	 Country country1 = (Country) iterator.next(); 
+		     
+	        	 //adding in to the list
+	        	  a.add(country1);
+	         }
+	         
+	    return a;     
+}
+}

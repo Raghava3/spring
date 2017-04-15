@@ -1,0 +1,82 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.bridgelabz.countryprojectdb.model.User;
+
+@Repository
+public class UserDaoImpl implements UserDaoInterface 
+{
+ 
+	@Autowired
+	SessionFactory sessionFactory;
+	
+	public int register(User user)
+	{
+		Session session = sessionFactory.openSession();
+		Transaction tr = null;
+		try {
+			tr = session.beginTransaction();
+			session.saveOrUpdate(user);
+			tr.commit();
+
+			return 1;
+		} catch (Exception e) {
+			tr.rollback();
+			return 0;
+		} finally {
+			session.close();
+		}
+	
+		
+	}
+
+	public Object loginValidation(String email, String password)
+	{
+		
+		Session session = sessionFactory.openSession();
+		Transaction tr = null;
+		try {
+			tr = session.beginTransaction();
+			String hql = "select id from User where email='"+email+"'and password='"+password+"'";
+			org.hibernate.Query query = session.createQuery(hql);
+			Object s =  query.uniqueResult();
+	        return s;
+		} catch (Exception e) {
+			
+		e.printStackTrace();
+			return 0;
+		} finally {
+			session.close();
+		}
+		
+		
+	}
+
+	@Override
+	public User profile(String email) 
+	{
+
+		Session session = sessionFactory.openSession();
+		Transaction tr = null;
+		
+		  Query query = session.createQuery("from User where email=:mail");
+		  /*query.executeUpdate();*/
+		  query.setParameter("mail", email);
+		 User user= (User) query.uniqueResult();
+		  
+		  return user; 
+		  
+		  
+		  session.createQuery("select  from Log  lb where lb.email = :email")
+          .setString("email", email)
+		
+	}
+}

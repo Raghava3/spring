@@ -1,0 +1,7 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+public interface CountryDaoInterface 
+{
+
+	public int update();
+}

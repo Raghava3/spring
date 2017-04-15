@@ -1,0 +1,48 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.bridgelabz.countryprojectdb.model.Country;
+
+public class CountryDaoImpl implements CountryDaoInterface {
+
+	@Autowired
+	SessionFactory sessionFactory;
+
+	@Override
+	public int update(int id,String name,int area,long population,String currency) 
+	{
+		
+		Session session = sessionFactory.openSession();
+		Transaction tr = null;
+		
+		Country country=new Country();
+        country.setId(id);
+        country.setName(name);
+        country.setArea(area);
+        country.setPopulation(population);
+        country.setCurrency(currency);
+       
+        
+        try {
+			tr = session.beginTransaction();
+             session.save(country);
+             tr.commit();
+       return 1;
+	    }
+        catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} 
+        finally 
+        {
+			session.close();
+		}
+	
+	
+
+}
+}

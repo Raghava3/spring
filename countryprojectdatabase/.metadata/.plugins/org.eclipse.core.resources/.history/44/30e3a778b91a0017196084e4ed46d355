@@ -1,0 +1,5 @@
+package com.bridgelabz.countryprojectdb.dao;
+
+public class CountryDaoImpl {
+
+}
