@@ -7,6 +7,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bridgelabz.LoginRegUsingRestController.model.Product;
+import com.bridgelabz.LoginRegUsingRestController.model.ProductPurchaseTransaction;
 import com.bridgelabz.LoginRegUsingRestController.model.User;
 
 @Repository
@@ -46,7 +48,7 @@ public class UserDaoImpl implements UserDaoInter {
 			query.setParameter("m", mail);
 			query.setParameter("p", password);
 			
-     User user	=query.uniqueResult();
+           User user	=query.uniqueResult();
 			System.out.println("user"+user);
 			return user ;
 			
@@ -57,12 +59,47 @@ public class UserDaoImpl implements UserDaoInter {
 		}
 	}
 
-	@Override
-	public User retrive() 
-	{
+
+	public boolean producrRegsiter(Product product) 
+	{try {
 		Session session = sessionFactory.openSession();
-	    Transaction transaction = session.beginTransaction();
-		
+		Transaction tr = session.beginTransaction();
+		session.save(product);
+		tr.commit();
+		session.close();
+		return true;
+	    }
+
+	catch (Exception e) 
+	{
+		e.printStackTrace();
+		return false;
+	}
 	}
 
+	
+	public boolean transaction(ProductPurchaseTransaction productPurchaseTransaction) {
+		try {
+			Session session = sessionFactory.openSession();
+			Transaction tr = session.beginTransaction();
+			session.save(productPurchaseTransaction);
+			tr.commit();
+			session.close();
+			return true;
+		    }
+
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	
+	
+		
+	
+	
+	
+	
 }

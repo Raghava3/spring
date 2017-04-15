@@ -26,17 +26,7 @@ public class User implements Serializable
 	private String email;
 	private String password;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="fk")
-	private List<Product> product;
 	
-	public List<Product> getProduct()
-	{
-		return product;
-	}
-	public void setProduct(List<Product> product) {
-		this.product = product;
-	}
 	public int getId() {
 		return id;
 	}
